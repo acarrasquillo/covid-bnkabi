@@ -27,3 +27,49 @@ results = client.get("n8mc-b4w4", case_month="2020-02")
 results_df = pd.DataFrame.from_records(results)
 
 results_df.value_counts(subset=["res_state"]).plot(kind='bar')
+
+
+results_df = pd.DataFrame.from_records(results)
+case_by_county_df=pd.concat([results_df.res_county])
+
+case_by_county_df
+
+case_by_county_df.value_counts()
+
+case_by_county_df.value_counts().iplot(kind="bar")
+
+temp = pd.DataFrame({'case_by_county':case_by_county_df.value_counts()})
+
+df = temp[temp.index != 'NA']
+
+df = df.sort_values(by='case_by_county', ascending=True)
+case_by_county = df
+case_by_county
+
+data  = go.Data([
+            go.Bar(
+              y = df.index,
+              x = df.case_by_county,
+              orientation='h'
+        )])
+layout = go.Layout(
+        height = 1000,
+        margin=go.Margin(l=300),
+        title = "Cases by County"
+)
+fig  = go.Figure(data=data, layout=layout)
+py.iplot(fig)
+
+results_df.case_month = results_df.case_month
+
+results_df.case_month.sort_values().index
+
+df_by_date = results_df.iloc[results_df.case_month.sort_values().index]
+
+df_by_date
+
+case_by_date = df_by_date.groupby('case_month').case_month.count()
+case_by_date.iplot(kind='scatter', title='Cases Per Month')
+
+
+case_by_date
