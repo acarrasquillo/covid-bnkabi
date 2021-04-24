@@ -1,5 +1,16 @@
 # covid-bnkabi
-Visualizing COVID data using CDC APIs 
+Visualize COVID-19 data for California data using CDC API 
+
+'''
+This iPython Notebook Visualized COVID-19 data from the data.cdc.gov APIs
+Dataset Name: COVID-19 Case Surveillance Public Use Data with Geography
+Dataset URL: https://data.cdc.gov/Case-Surveillance/COVID-19-Case-Surveillance-Public-Use-Data-with-Ge/n8mc-b4w4
+'''
+
+# See the iPython Notebook outputs in html on the link below
+https://acarrasquillo.github.io/covid-bnkabi/
+You can also download the repo and open the index.html file on the root directory.
+
 
 # DOCs utilized
 
@@ -14,9 +25,15 @@ https://dev.socrata.com/blog/2016/02/02/plotly-pandas.html
 
 
 # Requirements
+
+- Download the repo
+- On the root directory of the repo run the below commands
+
 ```
+pip install -r requirements.txt
 brew install npm
 npm install
 pip install jupyterlab "ipywidgets>=7.5"
 jupyter labextension install jupyterlab-plotly@4.14.3
+jupyter lab
 ```
